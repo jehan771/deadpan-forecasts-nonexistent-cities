@@ -26,6 +26,9 @@ if (LINE.includes("\n") || LINE.includes("\r")) {
 if (LINE.trim().length === 0) {
   fail("line must not be only whitespace");
 }
+if (LINE !== LINE.trim()) {
+  fail("line must not have leading or trailing whitespace");
+}
 
 mkdirSync("/output", { recursive: true });
 writeFileSync(OUT_PATH, LINE, "utf8");
